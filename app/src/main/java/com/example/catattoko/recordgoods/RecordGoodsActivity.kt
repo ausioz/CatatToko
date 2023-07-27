@@ -103,7 +103,6 @@ class RecordGoodsActivity : ComponentActivity(), RecordGoodsView {
             lastDateRecord = df.format(calendar.time)
         }
         else goodsDatabase.goodsDao().getDateByOrder().toList().first()
-        Log.d("wkwk",lastDateRecord)
         val parsedLastDate= df.parse(lastDateRecord)
         val parsedInputDate = df.parse(tanggal)
 

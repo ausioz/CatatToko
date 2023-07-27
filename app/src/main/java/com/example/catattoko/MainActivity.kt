@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,6 +14,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.res.colorResource
 import com.example.catattoko.databinding.ActivityMainBinding
 import com.example.catattoko.history.HistoryActivity
+import com.example.catattoko.history.HistoryAdapter
 import com.example.catattoko.recordgoods.RecordGoodsActivity
 
 class MainActivity : ComponentActivity() {
@@ -35,14 +37,17 @@ class MainActivity : ComponentActivity() {
                 position: Int,
                 id: Long
             ) {
-
-
                 if(position==5 || position==6){
                     binding.recordGoods.setBackgroundColor(getColor(R.color.white))
                     binding.recordGoods.setOnClickListener {
                         Toast.makeText(applicationContext, "User tidak memiliki akses", Toast.LENGTH_SHORT).show()
                     }
-
+                    binding.history.setOnClickListener {
+                        val intent = Intent(applicationContext,HistoryActivity::class.java)
+                        intent.putExtra(NAMA,arrayListUser[position])
+                        intent.putExtra(NIK,position+1)
+                        startActivity(intent)
+                      }
                 }
                 else{
                     binding.recordGoods.setBackgroundColor(getColor(R.color.teal_200))
@@ -57,7 +62,7 @@ class MainActivity : ComponentActivity() {
                         intent.putExtra(NAMA,arrayListUser[position])
                         intent.putExtra(NIK,position+1)
                         startActivity(intent)
-                    }
+                     }
                 }
             }
 

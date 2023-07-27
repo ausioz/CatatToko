@@ -2,6 +2,7 @@ package com.example.catattoko.history
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +14,7 @@ import com.example.catattoko.model.GoodsEntity
 import com.example.catattoko.recordgoods.RecordGoodsActivity
 import java.time.LocalDate
 
-class HistoryActivity : ComponentActivity(),ListView {
+class HistoryActivity : ComponentActivity(), ListView {
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var historyAdapter: HistoryAdapter
     private lateinit var goodsDatabase: GoodsDatabase
@@ -28,19 +29,19 @@ class HistoryActivity : ComponentActivity(),ListView {
         createGoodsDatabase()
         createPresenter()
         setupUserAdapter()
-
         listPresenter.getHistory()
-
     }
+
     override fun onResume() {
         super.onResume()
         listPresenter.getHistory()
     }
 
 
-    private fun createPresenter(){
-        listPresenter = ListPresenter(goodsDatabase,this)
+    private fun createPresenter() {
+        listPresenter = ListPresenter(goodsDatabase, this)
     }
+
     private fun setupUserAdapter() {
         historyAdapter = HistoryAdapter(
             onClickUpdate = ::updateHistory,
@@ -52,6 +53,7 @@ class HistoryActivity : ComponentActivity(),ListView {
             LinearLayoutManager.VERTICAL, false
         )
     }
+
     private fun createGoodsDatabase() {
         goodsDatabase = GoodsDatabase.getInstance(this)
 
@@ -64,17 +66,23 @@ class HistoryActivity : ComponentActivity(),ListView {
     override fun onDeleteHistorySuccess() {
         listPresenter.getHistory()
         Toast.makeText(this, "Catatan dihapus", Toast.LENGTH_SHORT).show()
-
     }
-    private fun updateHistory(goods: GoodsEntity){
+
+    private fun updateHistory(goods: GoodsEntity) {
         val nik = intent.getIntExtra(MainActivity.NIK, 99999999)
         val nama = intent.getStringExtra(MainActivity.NAMA)
 
-        val intent = Intent(applicationContext,RecordGoodsActivity::class.java)
-        intent.putExtra(MainActivity.NAMA,nama)
-        intent.putExtra(MainActivity.NIK,nik)
-        intent.putExtra("goods",goods)
-        startActivity(intent)
+
+        val intent = Intent(applicationContext, RecordGoodsActivity::class.java)
+        intent.putExtra(MainActivity.NAMA, nama)
+        intent.putExtra(MainActivity.NIK, nik)
+
+        if (nik == 6 || nik == 7) Toast.makeText(
+            applicationContext,
+            "User tidak memiliki akses",
+            Toast.LENGTH_SHORT
+        ).show()
+        else startActivity(intent)
     }
 
 }
