@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".recordgoods.RecordGoodsActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Catat Barang"
+        android:textColor="@color/teal_700"
+        android:textSize="30sp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="NIK Pencatat"
+        android:textColor="@color/teal_700"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/nik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/teal_200"
+        android:elegantTextHeight="true"
+        android:hint="NIK Pencatat"
+        android:textColor="@color/teal_700" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="Nama Pencatat"
+        android:textColor="@color/teal_700"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/teal_200"
+        android:elegantTextHeight="true"
+        android:hint="Nama Pencatat"
+        android:textColor="@color/teal_700" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="Jumlah Baarang"
+        android:textColor="@color/teal_700"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/jumlah_barang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/teal_200"
+        android:elegantTextHeight="true"
+        android:hint="Jumlah Barang"
+        android:inputType="number"
+        android:textColor="@color/teal_700" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="Pemasok"
+        android:textColor="@color/teal_700"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/pemasok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/teal_200"
+        android:elegantTextHeight="true"
+        android:hint="Pemasok"
+        android:textColor="@color/teal_700" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="Tanggal (yyyy/mm/dd)"
+        android:textColor="@color/teal_700"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/tanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/teal_200"
+        android:elegantTextHeight="true"
+        android:hint="Tanggal"
+        android:textColor="@color/teal_700" />
+
+    <Button
+        android:id="@+id/simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/teal_200"
+        android:elegantTextHeight="true"
+        android:hint="Simpan"
+        android:textColorHint="@color/teal_700" />
+
+</LinearLayout>
