@@ -66,8 +66,7 @@ class MainActivity : ComponentActivity() {
             }
 
         }
-
-
+        binding.logout.setOnClickListener { finish() }
     }
     companion object {
         const val NAMA = "nama"
