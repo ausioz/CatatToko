@@ -95,14 +95,15 @@ class RecordGoodsActivity : ComponentActivity(), RecordGoodsView {
 
         val df: DateFormat = SimpleDateFormat(DATE_FORMAT)
         df.isLenient = false
-        var lastDateRecord=""
-        if (lastDateRecord.isEmpty()){
+        var lastDateRecord= goodsDatabase.goodsDao().getDateByOrder().toList().toString()
+        Log.d("wkw",lastDateRecord)
+        if (lastDateRecord == "[]"){
             val calendar = Calendar.getInstance()
             calendar.time = df.parse(tanggal)
-//            calendar.add(Calendar.DAY_OF_MONTH,-14)
+            calendar.add(Calendar.DAY_OF_MONTH,-14)
             lastDateRecord = df.format(calendar.time)
-        }
-        else goodsDatabase.goodsDao().getDateByOrder().toList().first()
+        } else {var lastDateRecordList = goodsDatabase.goodsDao().getDateByOrder().toList()
+        lastDateRecord =lastDateRecordList.first()}
         val parsedLastDate= df.parse(lastDateRecord)
         val parsedInputDate = df.parse(tanggal)
 
@@ -130,7 +131,7 @@ class RecordGoodsActivity : ComponentActivity(), RecordGoodsView {
         } else if (daysBetween(parsedLastDate, parsedInputDate) < 14) {
             AlertDialog.Builder(this)
                 .setTitle("Permasalahan Tanggal")
-                .setMessage("Tanggal input dengan catatan terakhir kurang dari 2 minggu atau belum ada catatan terakhir")
+                .setMessage("Tanggal input dengan catatan terakhir kurang dari 2 minggu")
                 .setCancelable(false)
                 .setPositiveButton("Lanjut Simpan Catatan") { _, _ -> recordGoodsPresenter.saveData(goods) }
                 .setNegativeButton("Kembali") { _, _ -> }
